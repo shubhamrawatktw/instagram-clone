@@ -13,7 +13,7 @@ export default function Home() {
       </Head>
 
    {/* header  */}
- <h1>hello world</h1>
+ 
  <Header/>
 
    {/* feed  */}
