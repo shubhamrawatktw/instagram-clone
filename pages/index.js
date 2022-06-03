@@ -17,7 +17,7 @@ export default function Home() {
  <Header/>
 
    {/* feed  */}
-
+<p>lorem500</p>
 
    {/* footer  */}
 
