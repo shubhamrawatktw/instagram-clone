@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 
 export default function Suggestion() {
   const [suggestions, setSuggestions] = useState([]);
+  
 
   useEffect(() => {
     const newSuggestions = minifaker.array(5, (i) => {
@@ -16,7 +17,7 @@ export default function Suggestion() {
 
     setSuggestions(newSuggestions);
   }, []);
-  console.log(suggestions);
+  // console.log(suggestions);
   return (
     <div className="mt-4 ml-10">
       <div className="flex justify-between mb-5 text-sm">
@@ -24,9 +25,9 @@ export default function Suggestion() {
         <button className="text-gray-600 font-semibold">See all</button>
       </div>
       {suggestions &&
-        suggestions.map((suggestion) => {
+        suggestions.map((suggestion,i) => {
           return (
-            <div className="flex items-center justify-between mt-3">
+            <div key={i} className="flex items-center justify-between mt-3">
               <img
                 className="h-10 rounded-full border p-[2px]"
                 src={`https://i.pravatar.cc/150?img=${Math.ceil(
