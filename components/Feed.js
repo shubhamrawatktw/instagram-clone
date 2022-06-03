@@ -3,6 +3,7 @@ import MiniProfile from './MiniProfile'
 import Posts from './Posts'
 
 import Stories from './Stories'
+import Suggestion from './Suggestion'
 
 function Feed() {
   return (
@@ -20,6 +21,7 @@ function Feed() {
          <MiniProfile/>
 
           {/* suggestion  */}
+          <Suggestion/>
       </div>
       </section>
     </main>
