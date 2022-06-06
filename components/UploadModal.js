@@ -14,7 +14,7 @@ import { db, storage } from "../firebase";
 import { useSession } from "next-auth/react";
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
 
-export default function uploadModal() {
+export default function UploadModal() {
   const [open, setOpen] = useRecoilState(modalState);
   const [loading, setLoading] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
