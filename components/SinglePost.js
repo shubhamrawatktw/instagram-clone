@@ -30,7 +30,7 @@ function SinglePost({ id, username, userImg, img, caption }) {
   const [comments, setComments] = useState([]);
   const [hasLiked, setHasLiked] = useState(false);
   const [likes, setLikes] = useState([]);
-  // console.log(session.user);
+  
   useEffect(() => {
     const unsubscribe = onSnapshot(
       query(
@@ -96,7 +96,7 @@ function SinglePost({ id, username, userImg, img, caption }) {
       {/* post buttons  */}
       {session && (
         <div className="flex justify-between px-4 pt-4">
-          <div className="flex space-x-4">
+          <div className="flex space-x-3">
             {hasLiked ? (
               <HeartIconFilled
                 onClick={likePost}
@@ -105,7 +105,7 @@ function SinglePost({ id, username, userImg, img, caption }) {
             ) : (
               <HeartIcon onClick={likePost} className="btn" />
             )}
-
+            <p className="text-gray-600 font-semibold text-lg">{likes.length}</p>
             <ChatIcon className="btn" />
           </div>
           <BookmarkIcon className="btn" />
@@ -118,9 +118,9 @@ function SinglePost({ id, username, userImg, img, caption }) {
       </p>
       {comments.length > 0 && (
         <div className="mx-10 max-h-24 overflow-y-scroll scrollbar-none">
-          {comments.map((comment) => {
+          {comments.map((comment,i) => {
             return (
-              <div className="flex items-center space-x-2 mb-2">
+              <div className="flex items-center space-x-2 mb-2" key={i}>
                 <img
                   className="h-7 rounded-full object-cover"
                   src={comment.data().userImage}
