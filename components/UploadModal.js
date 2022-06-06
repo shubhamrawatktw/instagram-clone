@@ -3,11 +3,16 @@ import { useRecoilState } from "recoil";
 import { modalState } from "../atom/modalAtom";
 import Modal from "react-modal";
 import { CameraIcon } from "@heroicons/react/outline";
-import { addDoc, collection, doc, serverTimestamp, updateDoc } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  serverTimestamp,
+  updateDoc,
+} from "firebase/firestore";
 import { db, storage } from "../firebase";
 import { useSession } from "next-auth/react";
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
-
 
 export default function uploadModal() {
   const [open, setOpen] = useRecoilState(modalState);
@@ -31,16 +36,16 @@ export default function uploadModal() {
 
     const imageRef = ref(storage, `posts/${docRef.id}/image`);
     await uploadString(imageRef, selectedFile, "data_url").then(
-      async (snapshot) =>{
-        const downloadURL = await getDownloadURL(imageRef)
-        await updateDoc(doc(db,"posts",docRef.id),{
-          image : downloadURL
-        })
+      async (snapshot) => {
+        const downloadURL = await getDownloadURL(imageRef);
+        await updateDoc(doc(db, "posts", docRef.id), {
+          image: downloadURL,
+        });
       }
-    )
+    );
     setSelectedFile(null);
     setOpen(false);
-    setLoading(false)
+    setLoading(false);
   };
 
   const addImageToPost = (event) => {
@@ -71,7 +76,7 @@ export default function uploadModal() {
                 onClick={() => setSelectedFile(null)}
                 src={selectedFile}
                 alt="photo"
-                className="w-full max-h-[250px] object-cover cursor-pointer "
+                className="w-full max-h-[250px] object-contain cursor-pointer "
               />
             ) : (
               <CameraIcon
