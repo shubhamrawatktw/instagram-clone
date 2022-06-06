@@ -12,7 +12,7 @@ function Posts() {
     });
 
     return unsubscribe 
-  }, []);
+  }, [db]);
 
   return (
     <div>
