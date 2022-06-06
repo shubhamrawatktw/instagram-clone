@@ -8,6 +8,7 @@ import {
 } from "@heroicons/react/outline";
 
 function SinglePost({ id, username, userImg, img, caption }) {
+  // console.log(userImg,"profile")
   return (
     <div className="bg-white my-7 border rounded-md">
       {/* {post header} */}
